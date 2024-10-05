@@ -1,5 +1,6 @@
 extends Node2D
 
+class_name Enemy
 
 @onready var health_bar: ProgressBar = $ProgressBar
 
