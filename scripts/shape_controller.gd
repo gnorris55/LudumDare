@@ -118,8 +118,14 @@ func _on_area_2d_area_entered(area):
 	
 	print(area.name)
 	print("colision with an enemy")
+	
+	print(area.get_parent())
+	if (area.get_parent() != null):
+		area.get_parent().take_damage(40)
+
 	#pass # Replace with function body.
 
+ 
 
 func _on_bomb_area_entered(area):
 	print(area.name)

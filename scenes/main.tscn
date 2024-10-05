@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_u55vt"]
 [ext_resource type="PackedScene" uid="uid://bjn5fds0icbo8" path="res://scenes/Player Overlay.tscn" id="2_ndwl4"]
+
+[gd_scene load_steps=2 format=3 uid="uid://bfc7t4j2i2545"]
+
 [ext_resource type="PackedScene" uid="uid://be7uspxq4t2yh" path="res://scenes/enemies/enemy_manager.tscn" id="3_jcesg"]
 [ext_resource type="PackedScene" uid="uid://ohjudx156572" path="res://scenes/Game Over.tscn" id="4_2d62t"]
 [ext_resource type="PackedScene" uid="uid://cvych7c63qrr0" path="res://scenes/shape_drawing/shape_controller.tscn" id="5_m0qe0"]
@@ -31,3 +34,8 @@ grow_vertical = 1
 
 [connection signal="squeedDied" from="Player Overlay" to="GameOver" method="_on_player_overlay_squeed_died"]
 [connection signal="pressed_retry" from="GameOver" to="Player Overlay" method="_on_game_over_pressed_retry"]
+
+[node name="enemy_manager" parent="." instance=ExtResource("3_jcesg")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+

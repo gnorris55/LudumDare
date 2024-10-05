@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcidmetleqs5b"]
+[gd_scene load_steps=8 format=3 uid="uid://bcidmetleqs5b"]
 
 [ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_3k2sy"]
 [ext_resource type="Texture2D" uid="uid://bm3nm5simyk1s" path="res://assets/sprites/slime_purple.png" id="2_qmo7l"]
+[ext_resource type="PackedScene" uid="uid://boc0ecchsm7ci" path="res://scenes/enemies/health_bar.tscn" id="3_7hd27"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4x5w8"]
 atlas = ExtResource("2_qmo7l")
@@ -32,7 +33,7 @@ size = Vector2(14, 15)
 position = Vector2(128, -83)
 scale = Vector2(3, 3)
 script = ExtResource("1_3k2sy")
-speed = 15.0
+speed = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tcs87")
@@ -45,12 +46,8 @@ frame_progress = 0.707254
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_iigop")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -16.0
-offset_top = -15.0
-offset_right = 60.0
-offset_bottom = 12.0
-rotation = -6.28319
-scale = Vector2(0.457817, 0.262779)
-value = 50.0
-show_percentage = false
+[node name="HealthBar" parent="." instance=ExtResource("3_7hd27")]
+offset_left = -14.0
+offset_top = -11.0
+offset_right = 15.0
+offset_bottom = -7.0
