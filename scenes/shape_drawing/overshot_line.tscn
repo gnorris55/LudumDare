@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c67lyyna18pws"]
+
+[node name="overshot_line" type="Line2D"]
+width = 3.0
+default_color = Color(1, 0.203922, 0, 1)
