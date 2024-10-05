@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfc7t4j2i2545"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_u55vt"]
+[ext_resource type="PackedScene" uid="uid://be7uspxq4t2yh" path="res://scenes/enemies/enemy_manager.tscn" id="2_3s8tx"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_u55vt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="enemy_manager" parent="." instance=ExtResource("2_3s8tx")]

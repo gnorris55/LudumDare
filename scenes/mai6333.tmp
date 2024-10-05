@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfc7t4j2i2545"]
+
+[ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_wvqjy"]
+[ext_resource type="PackedScene" uid="uid://be7uspxq4t2yh" path="res://scenes/enemies/enemy_manager.tscn" id="2_3s8tx"]
+[ext_resource type="PackedScene" uid="uid://bf6i8wul0vy15" path="res://scenes/enemies/fast_enemy.tscn" id="2_pqxkr"]
+[ext_resource type="PackedScene" uid="uid://cdmyvs0r3ir0j" path="res://scenes/enemies/base_enemy.tscn" id="4_hwor2"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_wvqjy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="enemy_manager" parent="." instance=ExtResource("2_3s8tx")]
+
+[node name="base enemy" parent="." instance=ExtResource("4_hwor2")]
+position = Vector2(229, -136)
+
+[node name="Node2D" parent="." instance=ExtResource("2_pqxkr")]
