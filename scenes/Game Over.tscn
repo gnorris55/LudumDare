@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://ohjudx156572"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_17br1"]
+[ext_resource type="Script" path="res://scripts/retry_button.gd" id="1_forgf"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_17br1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.76, 16.16)
+color = Color(0, 0, 0, 0.270588)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 382.0
+offset_right = 468.0
+offset_bottom = 413.0
+scale = Vector2(6.12, 6.12)
+text = "Retry?"
+script = ExtResource("1_forgf")
+
+[connection signal="pressed_retry" from="." to="." method="_on_pressed_retry"]
+[connection signal="pressed" from="Button" to="." method="_pressed_retry"]
+[connection signal="pressed_retry" from="Button" to="." method="_on_button_pressed_retry"]
