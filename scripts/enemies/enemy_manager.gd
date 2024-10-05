@@ -8,7 +8,8 @@ extends Node
 const enemy = preload("res://scenes/enemies/base_enemy.tscn")
 const fast_enemy = preload("res://scenes/enemies/fast_enemy.tscn")
 const slow_enemy = preload("res://scenes/enemies/slow_enemy.tscn")
-var enemy_arr = [enemy, fast_enemy, slow_enemy]
+const teleport_enemy = preload("res://scenes/enemies/teleport_enemy.tscn")
+var enemy_arr = [enemy, fast_enemy, slow_enemy, teleport_enemy]
 var enemies = []
 var total_time = 0.0
 var accumulated_time = 0.0
@@ -47,16 +48,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if (accumulated_time >= 1.0):
+	if (accumulated_time >= 3.0):
 		#print("enemy should spawn")
-		var enemy_spawn_index = randi_range(0, 2)
+		var enemy_spawn_index = randi_range(0, 3)
 		var random_value = randf()
 		
 		#print(random_value)
 		
-		var new_instance = enemy_arr[enemy_spawn_index].instantiate()
+		#var new_instance = enemy_arr[enemy_spawn_index].instantiate()
+		var new_instance = enemy_arr[3].instantiate()
 		initialize_enemy(new_instance, fibonacci_sphere(200.0, random_value), Vector2(0, 0))
-		accumulated_time -= 1.0
+		accumulated_time -= 3.0
 		
 	#print(accumulated_time)
 	

@@ -12,5 +12,7 @@ func _process(delta: float) -> void:
 	
 func _draw():
 	#draw_line(Vector2(0, 0), Vector2(1, 1), Color(1.0, 0.0, 0.0))
-	draw_arc(Vector2(0.0,0.0), 200, 0, 2 * PI, 100, Color(1.0, 0.0, 0.0))
+	for i in range(10):
+		draw_arc(Vector2(0.0,0.0), 200 - i*20, 0, 2 * PI, 100, Color(1.0, 0.0, 0.0))
+	
 	#draw_arc(center, radius, start_angle, end_ang

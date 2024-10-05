@@ -43,3 +43,13 @@ frame_progress = 0.797524
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.666666, 1.33333)
 shape = SubResource("RectangleShape2D_1kq57")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 60.0
+offset_bottom = 12.0
+rotation = -6.28319
+scale = Vector2(0.457817, 0.262779)
+value = 50.0
+show_percentage = false

@@ -1,24 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcidmetleqs5b"]
+[gd_scene load_steps=7 format=3 uid="uid://db5ln8f6sdu8g"]
 
-[ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_3k2sy"]
-[ext_resource type="Texture2D" uid="uid://bm3nm5simyk1s" path="res://assets/sprites/slime_purple.png" id="2_qmo7l"]
+[ext_resource type="Script" path="res://scripts/enemies/teleport_enemy.gd" id="1_n3psa"]
+[ext_resource type="Texture2D" uid="uid://bjg1qo5hg7p62" path="res://assets/sprites/slime_green.png" id="2_1undr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4x5w8"]
-atlas = ExtResource("2_qmo7l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1n0p"]
+atlas = ExtResource("2_1undr")
+region = Rect2(48, 54, 24, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7027c"]
+atlas = ExtResource("2_1undr")
 region = Rect2(0, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cb1tn"]
-atlas = ExtResource("2_qmo7l")
-region = Rect2(24, 54, 24, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcs87"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4x5w8")
+"texture": SubResource("AtlasTexture_s1n0p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cb1tn")
+"texture": SubResource("AtlasTexture_7027c")
 }],
 "loop": true,
 "name": &"default",
@@ -30,14 +30,12 @@ size = Vector2(14, 15)
 
 [node name="base enemy" type="Node2D"]
 position = Vector2(128, -83)
-scale = Vector2(3, 3)
-script = ExtResource("1_3k2sy")
-speed = 15.0
+script = ExtResource("1_n3psa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tcs87")
 autoplay = "default"
-frame_progress = 0.707254
+frame_progress = 0.399521
 
 [node name="Area2D" type="Area2D" parent="."]
 
