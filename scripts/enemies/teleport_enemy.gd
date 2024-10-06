@@ -11,19 +11,19 @@ extends Node2D
 @export var speed = 60.0
 @export var health = 50
 
-var teleport_radius = 350
+var teleport_radius = 500
 var starting_position = Vector2(100, 100)
 #center of circle
 var target_position = Vector2(0, 0)
 var total_time = 0.0
 var accumulator = 0.0
-var spawn_rate = 6.0
+var spawn_rate = 4.0
 var teleporting = false
 
 func _ready():
 	health_bar.max_value = health
 	teleport_particles.emitting = false
-	toggle_visibility(false)
+	#toggle_visibility(false)
 	#timer.connect("timeout", self, "_on_timer_timeout")
 	#print("current speed: " + str(speed))
 
@@ -103,7 +103,6 @@ func take_damage(damage: int):
 
 func toggle_visibility(is_visible: bool) -> void:
 	visible = is_visible
-	
 
 func _process(delta: float) -> void:
 	movement(delta)

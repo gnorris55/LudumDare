@@ -5,7 +5,6 @@ class_name Enemy
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_particles: CPUParticles2D = $CPUParticles2D
-@onready var spawn_particles: CPUParticles2D = $SpawnParticles
 @onready var timer: Timer = $Timer
 
 @export var speed = 60.0
@@ -13,7 +12,6 @@ class_name Enemy
 
 var starting_position = Vector2(100, 100)
 var target_position = Vector2(0, 0)
-
 
 func _ready():
 	health_bar.max_value = health
@@ -44,8 +42,6 @@ func movement(delta: float):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func take_damage(damage: int):
 	health -= damage
-	#damage_particles.color = Color(0.87, 0.87, 0.87, 1)
-	damage_particles.emitting = false
 	damage_particles.emitting = true
 	if (health <= 0):
 		timer.start()
@@ -60,8 +56,6 @@ func toggle_visibility(is_visible: bool) -> void:
 func _process(delta: float) -> void:
 	#print(health)
 	movement(delta)
-	damage_particles.color = Color(0, 0, 0, 0.3)
-	spawn_particles.emitting = true
 
 
 func _on_timer_timeout() -> void:
