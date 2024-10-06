@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bf6i8wul0vy15"]
+[gd_scene load_steps=11 format=3 uid="uid://bf6i8wul0vy15"]
 
 [ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_mj14d"]
-[ext_resource type="Texture2D" uid="uid://bjg1qo5hg7p62" path="res://assets/sprites/slime_green.png" id="1_uo7tl"]
 [ext_resource type="Texture2D" uid="uid://bennwrewgc3a4" path="res://assets/sprites/enemies/fast_enemy1.png" id="2_1j4yk"]
 [ext_resource type="Texture2D" uid="uid://d1cxos70gvoux" path="res://assets/sprites/enemies/fast_enemy2.png" id="3_hd86u"]
 [ext_resource type="PackedScene" uid="uid://boc0ecchsm7ci" path="res://scenes/enemies/health_bar.tscn" id="3_oe8qh"]
@@ -19,14 +18,6 @@ region = Rect2(0, 0, 750, 750)
 atlas = ExtResource("4_nde0y")
 region = Rect2(0, 0, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6tbn2"]
-atlas = ExtResource("1_uo7tl")
-region = Rect2(0, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfrxo"]
-atlas = ExtResource("1_uo7tl")
-region = Rect2(24, 54, 24, 18)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5ml3"]
 animations = [{
 "frames": [{
@@ -42,17 +33,6 @@ animations = [{
 "loop": true,
 "name": &"base animation",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6tbn2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tfrxo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kq57"]
@@ -68,7 +48,6 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_r5ml3")
 animation = &"base animation"
 autoplay = "base animation"
-frame_progress = 0.770501
 
 [node name="Area2D" type="Area2D" parent="."]
 

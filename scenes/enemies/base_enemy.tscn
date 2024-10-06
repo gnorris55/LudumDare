@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdmyvs0r3ir0j"]
+[gd_scene load_steps=11 format=3 uid="uid://cdmyvs0r3ir0j"]
 
 [ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_3bhp3"]
 [ext_resource type="Texture2D" uid="uid://dro4rroh313e3" path="res://assets/sprites/enemies/slime_green.png" id="2_dyuj4"]
-[ext_resource type="Texture2D" uid="uid://bm3nm5simyk1s" path="res://assets/sprites/slime_purple.png" id="2_j76r6"]
 [ext_resource type="Texture2D" uid="uid://bsmfbl277ugfv" path="res://assets/sprites/enemies/IMG_0292.png" id="3_nfjvf"]
 [ext_resource type="PackedScene" uid="uid://boc0ecchsm7ci" path="res://scenes/enemies/health_bar.tscn" id="3_uk3jq"]
 [ext_resource type="Texture2D" uid="uid://ctjek25a7ngdh" path="res://assets/sprites/enemies/base_enemy1.png" id="4_jgn2r"]
@@ -19,14 +18,6 @@ region = Rect2(0, 0, 750, 750)
 atlas = ExtResource("4_jgn2r")
 region = Rect2(0, 0, 750, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4x5w8"]
-atlas = ExtResource("2_j76r6")
-region = Rect2(0, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cb1tn"]
-atlas = ExtResource("2_j76r6")
-region = Rect2(24, 54, 24, 18)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcs87"]
 animations = [{
 "frames": [{
@@ -42,17 +33,6 @@ animations = [{
 "loop": true,
 "name": &"base animation",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4x5w8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cb1tn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iigop"]
@@ -68,7 +48,6 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_tcs87")
 animation = &"base animation"
 autoplay = "base animation"
-frame_progress = 0.634727
 
 [node name="HealthBar" parent="." instance=ExtResource("3_uk3jq")]
 offset_left = -18.0
