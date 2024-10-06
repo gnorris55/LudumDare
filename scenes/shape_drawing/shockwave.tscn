@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b782fus5hvm8h"]
+
+[ext_resource type="Texture2D" uid="uid://7pxw745vvomq" path="res://assets/sprites/shockwave.png" id="1_dnd3t"]
+[ext_resource type="Script" path="res://scenes/shape_drawing/shockwave.gd" id="2_rneub"]
+
+[sub_resource type="Curve" id="Curve_t3eg4"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.896175, 314.595), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_w0ylx"]
+max_value = 0.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.494536, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kmeu5"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.886275)
+
+[sub_resource type="Curve" id="Curve_xyqjo"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="shockwave" type="CPUParticles2D"]
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("1_dnd3t")
+gravity = Vector2(0, 0)
+angular_velocity_min = 1.0
+angular_velocity_max = 2.69
+angular_velocity_curve = SubResource("Curve_t3eg4")
+scale_amount_curve = SubResource("Curve_w0ylx")
+color = Color(0.741176, 0.00784314, 0, 1)
+color_ramp = SubResource("Gradient_kmeu5")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("Curve_xyqjo")
+script = ExtResource("2_rneub")

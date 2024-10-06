@@ -11,12 +11,8 @@ config_version=5
 [application]
 
 config/name="Game Jam"
-<<<<<<< HEAD
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://zax_folder/zax_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-=======
-config/features=PackedStringArray("4.3", "GL Compatibility")
->>>>>>> c8d955625071d15d880575a5539c92bd8fdac1f8
 config/icon="res://icon.svg"
 
 [display]
