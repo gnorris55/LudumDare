@@ -6,8 +6,10 @@ var dots = []
 var overshot_lines = []
 var attacking = false
 const MAX_DIST = 400
+var theta = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#$Line2D.texture = load("res://assets/sprites/dot.png")
 	pass # Replace with function body.
 
 const DOT_SCENE = preload("res://scenes/shape_drawing/dot.tscn")
@@ -17,14 +19,14 @@ func _process(delta):
 	
 	if attacking:
 		$Polygon2D.color[3] += delta/2
+	#theta += delta
+	#$Line2D.set_wobble(points,theta)
 	if Input.is_action_just_pressed("add point"):
 		var size = get_viewport().size
 		var point = get_global_mouse_position()
-		print(point)
 		if len(points):
 			var overshot_point = point
 			var p1 = points[len(points)-1]
-			print("diastance",p1.distance_to(point))
 			var v2 = point -p1
 			v2 = v2.limit_length(MAX_DIST)#)
 			point = p1 + v2
@@ -33,12 +35,15 @@ func _process(delta):
 			overshot_line.add_point(point)
 			overshot_line.add_point(overshot_point)
 			add_child(overshot_line)
+			
 			#$Line2D
 			#if points[len(points)-1].distance_to(point) >= MAX_DIST:
 				
 				#we want to create a vector from point 1 to point 2 and then set magnitude to max distance
 				
 		points.append(point)
+		if len(points):
+			$Line2D.set_intermitant_points(points)
 		var dot = DOT_SCENE.instantiate()
 		add_child(dot)
 		dots.append(dot)
@@ -95,7 +100,7 @@ func _on_attack_delay_timeout():
 		
 	else:
 		$vaporize/CollisionPolygon2D.polygon = points
-		$Polygon2D.color[3] = 0
+		$Polygon2D.color[3] = 0.4
 	$kill_zone_delay.start()
 	points = []
 	
