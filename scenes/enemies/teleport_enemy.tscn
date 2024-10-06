@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://db5ln8f6sdu8g"]
+[gd_scene load_steps=22 format=3 uid="uid://db5ln8f6sdu8g"]
 
 [ext_resource type="Script" path="res://scripts/enemies/teleport_enemy.gd" id="1_n3psa"]
-[ext_resource type="Texture2D" uid="uid://bjg1qo5hg7p62" path="res://assets/sprites/slime_green.png" id="2_1undr"]
 [ext_resource type="Texture2D" uid="uid://ct55o8tlnarr7" path="res://assets/sprites/enemies/teleport_enemy1.png" id="3_nuf5g"]
 [ext_resource type="PackedScene" uid="uid://boc0ecchsm7ci" path="res://scenes/enemies/health_bar.tscn" id="3_ypxvb"]
 [ext_resource type="Texture2D" uid="uid://bijxlxkgxt16b" path="res://assets/sprites/enemies/teleport_enemy2.png" id="4_je86h"]
@@ -10,14 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bbiale48le0h0" path="res://assets/sprites/enemies/teleport_action4.png" id="7_mucep"]
 [ext_resource type="Texture2D" uid="uid://djwj67i4rfvda" path="res://assets/sprites/enemies/teleport_action5.png" id="8_w1tty"]
 [ext_resource type="Texture2D" uid="uid://uefqkobsyx7c" path="res://assets/sprites/enemies/teleport_action6.png" id="9_kfolq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1n0p"]
-atlas = ExtResource("2_1undr")
-region = Rect2(48, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7027c"]
-atlas = ExtResource("2_1undr")
-region = Rect2(0, 54, 24, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myx2t"]
 atlas = ExtResource("3_nuf5g")
@@ -61,17 +52,6 @@ region = Rect2(0, 150, 750, 675)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcs87"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s1n0p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7027c")
-}],
-"loop": true,
-"name": &"default",
-"speed": 3.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_myx2t")
@@ -147,7 +127,7 @@ script = ExtResource("1_n3psa")
 texture_filter = 2
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_tcs87")
-animation = &"teleport2"
+animation = &"default animation"
 autoplay = "default animation"
 
 [node name="Area2D" type="Area2D" parent="."]
