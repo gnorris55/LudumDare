@@ -121,7 +121,7 @@ func _on_area_2d_area_entered(area):
 	
 	print(area.get_parent())
 	if (area.get_parent() != null):
-		area.get_parent().take_damage(40)
+		area.get_parent().take_damage(20)
 		print(area.get_parent())
 
 	#pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://corm2st88yduk"]
+[gd_scene load_steps=9 format=3 uid="uid://corm2st88yduk"]
 
 [ext_resource type="PackedScene" uid="uid://be7uspxq4t2yh" path="res://scenes/enemies/enemy_manager.tscn" id="1_4yrst"]
 [ext_resource type="PackedScene" uid="uid://cvych7c63qrr0" path="res://scenes/shape_drawing/shape_controller.tscn" id="2_5k0vm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhdndi604fjuq" path="res://assets/sprites/sticky.png" id="5_5o18k"]
 [ext_resource type="Texture2D" uid="uid://cjg5mvvmso3lk" path="res://assets/sprites/scissor.png" id="6_py3mu"]
 [ext_resource type="Texture2D" uid="uid://t1nccfqmw4lb" path="res://assets/sprites/pencil.png" id="7_o4k38"]
+[ext_resource type="PackedScene" uid="uid://hs2t47u1eo8k" path="res://scenes/pencil_cursor.tscn" id="8_ikkxw"]
 
 [node name="Graeme_scene" type="Node2D"]
 
@@ -35,3 +36,5 @@ texture = ExtResource("6_py3mu")
 position = Vector2(-482, 165)
 scale = Vector2(0.106176, 0.106176)
 texture = ExtResource("7_o4k38")
+
+[node name="pencilCursor" parent="." instance=ExtResource("8_ikkxw")]

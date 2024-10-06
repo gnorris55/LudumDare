@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf6i8wul0vy15"]
+[gd_scene load_steps=15 format=3 uid="uid://bf6i8wul0vy15"]
 
 [ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_mj14d"]
 [ext_resource type="Texture2D" uid="uid://bennwrewgc3a4" path="res://assets/sprites/enemies/fast_enemy1.png" id="2_1j4yk"]
@@ -29,6 +29,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e13gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e05k")
 }],
 "loop": true,
 "name": &"base animation",
@@ -38,7 +41,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kq57"]
 size = Vector2(34.6667, 54.6667)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sgwa"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 0.309804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ukc6"]
+bg_color = Color(0.784314, 0, 0.156863, 1)
+
 [sub_resource type="Curve" id="Curve_b423x"]
+_data = [Vector2(0.0505618, 1), 0.0, 0.0, 0, 0, Vector2(0.983146, 0.054945), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0qf74"]
 _data = [Vector2(0.0505618, 1), 0.0, 0.0, 0, 0, Vector2(0.983146, 0.054945), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -68,6 +81,10 @@ offset_left = -16.0
 offset_top = -33.3333
 offset_right = 13.0
 offset_bottom = -29.3333
+theme_override_styles/background = SubResource("StyleBoxFlat_2sgwa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ukc6")
+value = 100.0
+fill_mode = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
@@ -88,3 +105,20 @@ color = Color(0.870588, 0.870588, 0.870588, 1)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="SpawnParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_0qf74")
+color = Color(0.162065, 0.162066, 0.162066, 1)

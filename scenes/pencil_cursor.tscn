@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hs2t47u1eo8k"]
+
+[ext_resource type="Texture2D" uid="uid://84qfud7x00mt" path="res://assets/sprites/pencil_cursor.png" id="1_8t31g"]
+[ext_resource type="Script" path="res://scripts/extra/pencil_cursor.gd" id="2_c4txi"]
+
+[node name="pencilCursor" type="Sprite2D"]
+position = Vector2(1, 0)
+scale = Vector2(0.303634, 0.303634)
+texture = ExtResource("1_8t31g")
+offset = Vector2(450, 100)
+script = ExtResource("2_c4txi")
