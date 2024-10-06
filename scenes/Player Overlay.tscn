@@ -1,58 +1,24 @@
-[gd_scene load_steps=61 format=3 uid="uid://bjn5fds0icbo8"]
+[gd_scene load_steps=47 format=3 uid="uid://bjn5fds0icbo8"]
 
 [ext_resource type="Script" path="res://scripts/player_overlay.gd" id="1_3av6b"]
 [ext_resource type="Texture2D" uid="uid://cxp4105n1nekv" path="res://assets/sprites/knight.png" id="1_q1sol"]
-[ext_resource type="Script" path="res://scripts/squeed.gd" id="2_dd6wd"]
-[ext_resource type="Texture2D" uid="uid://d2jhae5x563dw" path="res://assets/sprites/fruit.png" id="3_5qyqj"]
-[ext_resource type="Script" path="res://scripts/hearts.gd" id="4_0opdv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_og1hf"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(0, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t7csg"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(32, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2b6j"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(64, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2wav"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(96, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ri3r"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(0, 192, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ox1c"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(32, 192, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6r10"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(64, 192, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mmmj"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(96, 192, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_788ow"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yr5ps"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyvfk"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3drrg"]
-atlas = ExtResource("1_q1sol")
-region = Rect2(96, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://c4n1m6h6oxo2y" path="res://zax_folder/squeeb_damage_1.png" id="3_jen6d"]
+[ext_resource type="Texture2D" uid="uid://gqa2lfl74dy2" path="res://zax_folder/squeeb_1.png" id="3_s3ad7"]
+[ext_resource type="Texture2D" uid="uid://bujjpay0byyb3" path="res://zax_folder/squeeb_damage_2.png" id="4_pjsxj"]
+[ext_resource type="Texture2D" uid="uid://b2dk6ldhjq54u" path="res://zax_folder/squeeb_2.png" id="4_w8xag"]
+[ext_resource type="Texture2D" uid="uid://crj88if6uqh4j" path="res://zax_folder/squeeb_damage_3.png" id="5_ugbcr"]
+[ext_resource type="Script" path="res://scripts/hearts_controller.gd" id="6_8f3ei"]
+[ext_resource type="Texture2D" uid="uid://bbqynbm6fru60" path="res://zax_folder/squeeb_damage_4.png" id="6_p75gu"]
+[ext_resource type="Texture2D" uid="uid://bixu5jjb78qxm" path="res://zax_folder/heart_1.png" id="6_w3ktj"]
+[ext_resource type="Texture2D" uid="uid://dnefsxtw0212c" path="res://zax_folder/heart_2.png" id="7_p6m02"]
+[ext_resource type="Texture2D" uid="uid://cygqfg6yqkl4p" path="res://zax_folder/squeeb_death_1.png" id="7_q4faa"]
+[ext_resource type="Texture2D" uid="uid://bpa3ss7cjjpst" path="res://zax_folder/squeeb_death_2.png" id="8_1drqx"]
+[ext_resource type="Texture2D" uid="uid://bphl43i7gb2ul" path="res://zax_folder/squeeb_death_3.png" id="9_a1a5f"]
+[ext_resource type="Texture2D" uid="uid://c8j8spcmtob4d" path="res://zax_folder/squeeb_death_4.png" id="10_d85yg"]
+[ext_resource type="Texture2D" uid="uid://bjg7tmaf51p7s" path="res://zax_folder/squeeb_death_5.png" id="11_ctx2u"]
+[ext_resource type="Texture2D" uid="uid://bd5jtp16bxcsp" path="res://zax_folder/squeeb_death_6.png" id="12_qtdyt"]
+[ext_resource type="Script" path="res://scripts/squeed.gd" id="15_6cb5f"]
+[ext_resource type="Script" path="res://scenes/timer.gd" id="19_v763d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_updci"]
 atlas = ExtResource("1_q1sol")
@@ -154,57 +120,6 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_og1hf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t7csg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2b6j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f2wav")
-}],
-"loop": false,
-"name": &"knight_death",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ri3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7ox1c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l6r10")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7mmmj")
-}],
-"loop": false,
-"name": &"knight_hit",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_788ow")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yr5ps")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lyvfk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3drrg")
-}],
-"loop": true,
-"name": &"knight_idle",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_updci")
 }, {
 "duration": 1.0,
@@ -284,172 +199,137 @@ animations = [{
 "loop": true,
 "name": &"knight_run",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_p75gu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ugbcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pjsxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jen6d")
+}],
+"loop": false,
+"name": &"squeeb_damage",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_q4faa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1drqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a1a5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d85yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ctx2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qtdyt")
+}],
+"loop": false,
+"name": &"squeeb_death",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_s3ad7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w8xag")
+}],
+"loop": true,
+"name": &"squeeb_idle",
+"speed": 2.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c00t6"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_8y03t"]
+radius = 6.28117
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r533f"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef6m0"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(48, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxwow"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(48, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ogwnr"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(48, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7pp8x"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsjaj"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydfer"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ot31"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ptlq"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsa3r"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 16, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ms8kh"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 32, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ehqpe"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 48, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7vte"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 0, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kegac"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 16, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufau7"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 32, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_by8us"]
-atlas = ExtResource("3_5qyqj")
-region = Rect2(0, 48, 64, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qxfsv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_35pr6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r533f")
+"texture": ExtResource("6_w3ktj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ef6m0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sxwow")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ogwnr")
-}],
-"loop": false,
-"name": &"hp_0",
-"speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7pp8x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jsjaj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ydfer")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ot31")
+"texture": ExtResource("7_p6m02")
 }],
 "loop": true,
-"name": &"hp_1",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ptlq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsa3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ms8kh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ehqpe")
-}],
-"loop": true,
-"name": &"hp_2",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x7vte")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kegac")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ufau7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_by8us")
-}],
-"loop": true,
-"name": &"hp_3",
-"speed": 12.0
+"name": &"default",
+"speed": 2.0
 }]
 
 [node name="Player Overlay" type="Node2D"]
 script = ExtResource("1_3av6b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
+zoom = Vector2(0.9, 0.9)
 
 [node name="Squeed" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(-3, 7)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_nsmr1")
-animation = &"knight_death"
-autoplay = "knight_idle"
-script = ExtResource("2_dd6wd")
-devTest = true
+animation = &"squeeb_damage"
+autoplay = "squeeb_idle"
+offset = Vector2(40, -50)
+script = ExtResource("15_6cb5f")
 
 [node name="Area2D" type="Area2D" parent="Squeed"]
+position = Vector2(30, -70)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Squeed/Area2D"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_c00t6")
+shape = SubResource("CircleShape2D_8y03t")
 
-[node name="Hearts" type="AnimatedSprite2D" parent="."]
-position = Vector2(-576, -324)
-sprite_frames = SubResource("SpriteFrames_qxfsv")
-animation = &"hp_0"
-autoplay = "hp_3"
-centered = false
-script = ExtResource("4_0opdv")
+[node name="HeartsController" type="Node2D" parent="."]
+position = Vector2(-521, -119)
+script = ExtResource("6_8f3ei")
 
-[connection signal="squeedDied" from="Squeed" to="." method="_on_squeed_squeed_died"]
-[connection signal="body_entered" from="Squeed/Area2D" to="Squeed" method="_on_node2d_entered_squeed"]
+[node name="Heart1" type="AnimatedSprite2D" parent="HeartsController"]
+position = Vector2(-39, -36)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_35pr6")
+
+[node name="Heart2" type="AnimatedSprite2D" parent="HeartsController"]
+position = Vector2(43, -23)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_35pr6")
+frame_progress = 0.131331
+
+[node name="Heart3" type="AnimatedSprite2D" parent="HeartsController"]
+position = Vector2(-16, 32)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_35pr6")
+frame_progress = 0.131331
+
+[node name="Timer" type="Label" parent="."]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 570.0
+offset_top = -360.0
+offset_right = 633.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "00"
+horizontal_alignment = 2
+script = ExtResource("19_v763d")
+on = true
+
+[connection signal="area_entered" from="Squeed/Area2D" to="." method="_Squeed_Area2D_entered"]

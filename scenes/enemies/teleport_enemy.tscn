@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://db5ln8f6sdu8g"]
+[gd_scene load_steps=27 format=3 uid="uid://db5ln8f6sdu8g"]
 
 [ext_resource type="Script" path="res://scripts/enemies/teleport_enemy.gd" id="1_n3psa"]
 [ext_resource type="Texture2D" uid="uid://ct55o8tlnarr7" path="res://assets/sprites/enemies/teleport_enemy1.png" id="3_nuf5g"]
@@ -119,9 +119,29 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iigop"]
 size = Vector2(32, 65)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy2o5"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 0.309804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kjbf"]
+bg_color = Color(0.784314, 0, 0.156863, 1)
+
+[sub_resource type="Curve" id="Curve_xbyq4"]
+_data = [Vector2(0.0505618, 1), 0.0, 0.0, 0, 0, Vector2(0.983146, 0.054945), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nuc13"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 100), 0.0, 0.0, 0, 0, Vector2(1, 16.4835), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_bby8c"]
+_data = [Vector2(0.0505618, 1), 0.0, 0.0, 0, 0, Vector2(0.983146, 0.054945), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="base enemy" type="Node2D"]
 position = Vector2(128, -83)
 script = ExtResource("1_n3psa")
+health = 40
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
@@ -131,6 +151,8 @@ animation = &"default animation"
 autoplay = "default animation"
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(5, -0.5)
@@ -141,7 +163,65 @@ offset_left = -8.0
 offset_top = -39.0
 offset_right = 21.0
 offset_bottom = -35.0
+theme_override_styles/background = SubResource("StyleBoxFlat_uy2o5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5kjbf")
+value = 100.0
+fill_mode = 1
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_xbyq4")
+color = Color(0.868985, 0.868985, 0.868985, 1)
+
+[node name="TeleportParticles" type="CPUParticles2D" parent="."]
+position = Vector2(6, -6)
+amount = 20
+randomness = 1.0
+lifetime_randomness = 1.0
+fixed_fps = 40
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = 1.0
+angular_velocity_max = 1.0
+damping_curve = SubResource("Curve_nuc13")
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color = Color(0.588191, 0.865355, 0.326769, 1)
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="SpawnParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_bby8c")
+color = Color(0.162065, 0.162066, 0.162066, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

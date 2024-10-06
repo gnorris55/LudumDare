@@ -1,9 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://ohjudx156572"]
+[gd_scene load_steps=10 format=3 uid="uid://ohjudx156572"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_17br1"]
-[ext_resource type="Script" path="res://scripts/retry_button.gd" id="1_forgf"]
+[ext_resource type="Texture2D" uid="uid://y1um3o1yc2sb" path="res://zax_folder/retry_button_1.png" id="3_kodr4"]
+[ext_resource type="Texture2D" uid="uid://bqlw0aqtpdmgj" path="res://zax_folder/retry_button_2.png" id="4_0c8h5"]
+[ext_resource type="Texture2D" uid="uid://jilm4da4uycv" path="res://zax_folder/exit_button_1.png" id="4_4bab3"]
+[ext_resource type="Texture2D" uid="uid://dgc6r4a4ensmq" path="res://zax_folder/exit_button_2.png" id="5_li3f6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djixn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kodr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0c8h5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxbj3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trfl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4bab3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_li3f6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i53ox"]
 
 [node name="GameOver" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,21 +50,54 @@ script = ExtResource("1_17br1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(28.76, 16.16)
-color = Color(0, 0, 0, 0.270588)
+offset_left = -1079.0
+offset_top = -591.0
+offset_right = -1039.0
+offset_bottom = -551.0
+scale = Vector2(58, 33)
+color = Color(0, 0, 0, 0.392157)
 
-[node name="Button" type="Button" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 0.9)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(26, 167)
+scale = Vector2(0.412, 0.402)
+sprite_frames = SubResource("SpriteFrames_djixn")
+autoplay = "default"
+
+[node name="RetryButton" type="Button" parent="AnimatedSprite2D"]
+offset_left = -237.864
+offset_top = -238.806
+offset_right = -227.864
+offset_bottom = -230.806
+scale = Vector2(35.3813, 19.7467)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mxbj3")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(596, 358)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_trfl3")
+autoplay = "default"
+
+[node name="ExitButton" type="Button" parent="AnimatedSprite2D2"]
+offset_left = -245.0
+offset_top = -235.0
+offset_right = -237.0
+offset_bottom = -227.0
+scale = Vector2(45.8754, 18.5374)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i53ox")
+
+[node name="GameOverText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 411.0
-offset_top = 382.0
-offset_right = 468.0
-offset_bottom = 413.0
-scale = Vector2(6.12, 6.12)
-text = "Retry?"
-script = ExtResource("1_forgf")
+offset_left = -382.0
+offset_top = -134.0
+offset_right = 352.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 128
+text = "GAME OVER"
+horizontal_alignment = 1
 
 [connection signal="pressed_retry" from="." to="." method="_on_pressed_retry"]
-[connection signal="pressed" from="Button" to="." method="_pressed_retry"]
-[connection signal="pressed_retry" from="Button" to="." method="_on_button_pressed_retry"]
+[connection signal="pressed" from="AnimatedSprite2D/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="AnimatedSprite2D2/ExitButton" to="." method="_on_exit_button_pressed"]

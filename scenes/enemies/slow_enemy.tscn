@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcidmetleqs5b"]
+[gd_scene load_steps=15 format=3 uid="uid://bcidmetleqs5b"]
 
 [ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_3k2sy"]
 [ext_resource type="Texture2D" uid="uid://cwlnrvcxpccwi" path="res://assets/sprites/enemies/slow_enemy1.png" id="3_5d6a3"]
@@ -29,6 +29,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4wcom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tvfj")
 }],
 "loop": true,
 "name": &"default animation",
@@ -36,12 +39,27 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iigop"]
-size = Vector2(43.3333, 61)
+size = Vector2(23, 61)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5auy"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 0.309804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pc87"]
+bg_color = Color(0.784314, 0, 0.156863, 1)
+
+[sub_resource type="Curve" id="Curve_xlygj"]
+_data = [Vector2(0.0505618, 1), 0.0, 0.0, 0, 0, Vector2(0.983146, 0.054945), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_b3trr"]
+_data = [Vector2(0.0505618, 1), 0.0, 0.0, 0, 0, Vector2(0.983146, 0.054945), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="base enemy" type="Node2D"]
 position = Vector2(128, -83)
 script = ExtResource("1_3k2sy")
-speed = 10.0
+speed = 7.0
+health = 80
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
@@ -52,9 +70,11 @@ autoplay = "default animation"
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.666668, 2.5)
+position = Vector2(-1.5, 2.5)
 shape = SubResource("RectangleShape2D_iigop")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_7hd27")]
@@ -62,3 +82,44 @@ offset_left = -15.6667
 offset_top = -36.3333
 offset_right = 13.3333
 offset_bottom = -32.3333
+theme_override_styles/background = SubResource("StyleBoxFlat_q5auy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2pc87")
+value = 100.0
+fill_mode = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_xlygj")
+color = Color(0.870588, 0.870588, 0.870588, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SpawnParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_b3trr")
+color = Color(0.162065, 0.162066, 0.162066, 1)

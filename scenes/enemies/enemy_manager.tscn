@@ -7,4 +7,5 @@
 script = ExtResource("1_2sn4c")
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 script = ExtResource("2_jlnon")

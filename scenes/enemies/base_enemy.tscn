@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdmyvs0r3ir0j"]
+[gd_scene load_steps=14 format=3 uid="uid://cdmyvs0r3ir0j"]
 
 [ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_3bhp3"]
 [ext_resource type="Texture2D" uid="uid://bcbyfmsgb8fvs" path="res://assets/sprites/enemies/base_enemy2.png" id="3_dq1wn"]
@@ -29,18 +29,32 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xr5bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orv3h")
 }],
 "loop": true,
 "name": &"base animation",
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yl15"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 0.309804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpdbr"]
+bg_color = Color(0.782592, 0, 0.156596, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iigop"]
-size = Vector2(33, 33)
+size = Vector2(24, 33)
+
+[sub_resource type="Curve" id="Curve_xiyl5"]
+_data = [Vector2(0.0505618, 1), 0.0, 0.0, 0, 0, Vector2(0.983146, 0.054945), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="base enemy" type="Node2D"]
 script = ExtResource("1_3bhp3")
-speed = 30.0
+speed = 15.0
+health = 40
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
@@ -48,15 +62,61 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_tcs87")
 animation = &"base animation"
 autoplay = "base animation"
+frame_progress = 0.829855
 
 [node name="HealthBar" parent="." instance=ExtResource("3_uk3jq")]
 offset_left = -18.0
 offset_top = -14.0
 offset_right = 11.0
 offset_bottom = -10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7yl15")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lpdbr")
+value = 100.0
+fill_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-5.5, 10.5)
+position = Vector2(-5, 10.5)
 shape = SubResource("RectangleShape2D_iigop")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_xiyl5")
+color = Color(0.868985, 0.868985, 0.868985, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SpawnParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_xiyl5")
+color = Color(0.162065, 0.162066, 0.162066, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
