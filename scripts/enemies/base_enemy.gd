@@ -5,6 +5,8 @@ class_name Enemy
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_particles: CPUParticles2D = $CPUParticles2D
+@onready var spawn_particles: CPUParticles2D = $SpawnParticles
+
 @onready var timer: Timer = $Timer
 
 @export var speed = 60.0
@@ -52,6 +54,7 @@ func take_damage(damage: int):
 
 func toggle_visibility(is_visible: bool) -> void:
 	visible = is_visible
+	spawn_particles.emitting = true
 
 func _process(delta: float) -> void:
 	#print(health)

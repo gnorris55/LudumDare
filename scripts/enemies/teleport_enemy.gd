@@ -23,7 +23,7 @@ var teleporting = false
 func _ready():
 	health_bar.max_value = health
 	teleport_particles.emitting = false
-	#toggle_visibility(false)
+	toggle_visibility(false)
 	#timer.connect("timeout", self, "_on_timer_timeout")
 	#print("current speed: " + str(speed))
 
@@ -103,6 +103,9 @@ func take_damage(damage: int):
 
 func toggle_visibility(is_visible: bool) -> void:
 	visible = is_visible
+	animated_sprite.play("teleport2")
+	timer.start()
+	teleport_state = 1
 
 func _process(delta: float) -> void:
 	movement(delta)
