@@ -9,10 +9,11 @@ const enemy = preload("res://scenes/enemies/base_enemy.tscn")
 const fast_enemy = preload("res://scenes/enemies/fast_enemy.tscn")
 const slow_enemy = preload("res://scenes/enemies/slow_enemy.tscn")
 const teleport_enemy = preload("res://scenes/enemies/teleport_enemy.tscn")
-var enemy_arr = [enemy, fast_enemy, slow_enemy, teleport_enemy]
-var enemies = []
+var enemies = [enemy]
 var total_time = 0.0
 var accumulated_time = 0.0
+var spawn_rate = 3.0
+var spawn_radius = 300
 
 # Called when the node enters the scene tree for the first time.
 
@@ -41,24 +42,47 @@ func load_multiple_enemies(number_enemies: int):
 		
 
 func _ready() -> void:
+	#enemies.append(teleport_enemy)
 	#load_multiple_enemies(5)
 	pass # Replace with function body.
 
+func determine_enemy_type():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if (accumulated_time >= 3.0):
+	
+	if (accumulated_time >= spawn_rate):
 		#print("enemy should spawn")
-		var enemy_spawn_index = randi_range(0, 3)
-		var random_value = randf()
-		
 		#print(random_value)
 		
-		#var new_instance = enemy_arr[enemy_spawn_index].instantiate()
-		var new_instance = enemy_arr[3].instantiate()
-		initialize_enemy(new_instance, fibonacci_sphere(200.0, random_value), Vector2(0, 0))
-		accumulated_time -= 3.0
+		var spawn_number = floor(2*log(0.25*total_time + 1))
+		
+		#print("number to spawn: " + str(spawn_number))
+		
+		for i in range(spawn_number):
+			#print("enemy array size: " + str(enemies.size()))
+			var enemy_spawn_index = randi_range(0, enemies.size() - 1)
+			var random_value = randf()
+			var new_instance = enemies[enemy_spawn_index].instantiate()
+			#var new_instance = enemy_arr[3].instantiate()
+			initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
+		
+		if (total_time > 5 and enemies.size() < 2):
+			enemies.append(slow_enemy)
+			#print("adding slow enemy")
+			#print(enemies)
+		
+		if (total_time > 10 and enemies.size() < 3):
+			enemies.append(fast_enemy)
+		
+		if (total_time > 15 and enemies.size() < 4):
+			enemies.append(teleport_enemy)
+	
+		accumulated_time -= spawn_rate
+		
+		
 		
 	#print(accumulated_time)
 	
