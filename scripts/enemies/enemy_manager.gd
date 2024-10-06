@@ -13,7 +13,7 @@ var enemies = [enemy]
 var total_time = 0.0
 var accumulated_time = 0.0
 var spawn_rate = 3.0
-var spawn_radius = 300
+var spawn_radius = 500
 
 # Called when the node enters the scene tree for the first time.
 
