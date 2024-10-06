@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://co0et8vgqkfn2"]
 
-[ext_resource type="Texture2D" uid="uid://bjql3pyt76b2v" path="res://assets/sprites/dot.png" id="1_j0sqn"]
+[ext_resource type="Texture2D" uid="uid://cl6bgfng011q3" path="res://assets/sprites/scirbble_dot.png" id="1_wh7v1"]
 
 [node name="dot" type="Sprite2D"]
-texture = ExtResource("1_j0sqn")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_wh7v1")

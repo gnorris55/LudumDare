@@ -13,12 +13,21 @@ func _process(delta):
 	pass
 	
 func set_wobble(points1,theta):
-	clear_points()
+#	clear_points()
+	var i = 0
 	for point in points1:
-		point.x += 10*sin(wobble_speed*theta)#10*rng.randi_range(-100,100)/100#sin(100*delta)#rng.randi_range(-5,5)
-		point.y += 10*sin(wobble_speed*theta)
-#		print(sin(30*delta))
-		add_point(point)
+		if rng.randi_range(0,25) == 0:
+#			point.x += rng.randi_range(-20,20)#10*sin(wobble_speed*theta)#10*rng.randi_range(-100,100)/100#sin(100*delta)#rng.randi_range(-5,5)
+#			point.y += rng.randi_range(-20,20)#10*sin(wobble_speed*theta)
+			print(points)
+			points[i].x = point.x +rng.randi_range(-5,5)
+			points[i].y = point.y +rng.randi_range(-5,5)
+		i+=1
+#	for point in points1:
+#		point.x += 10*sin(wobble_speed*theta)#10*rng.randi_range(-100,100)/100#sin(100*delta)#rng.randi_range(-5,5)
+#		point.y += 10*sin(wobble_speed*theta)
+##		print(sin(30*delta))
+#		add_point(point)
 	#points = points1
 func set_intermitant_points(points1):
 	var i = 0
