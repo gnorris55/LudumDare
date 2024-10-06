@@ -13,6 +13,7 @@ var enemies = [enemy]
 var total_time = 0.0
 var accumulated_time = 0.0
 var spawn_rate = 3.0
+var spawn_radius = 300
 
 # Called when the node enters the scene tree for the first time.
 
@@ -41,6 +42,7 @@ func load_multiple_enemies(number_enemies: int):
 		
 
 func _ready() -> void:
+	#enemies.append(teleport_enemy)
 	#load_multiple_enemies(5)
 	pass # Replace with function body.
 
@@ -65,7 +67,7 @@ func _process(delta: float) -> void:
 			var random_value = randf()
 			var new_instance = enemies[enemy_spawn_index].instantiate()
 			#var new_instance = enemy_arr[3].instantiate()
-			initialize_enemy(new_instance, fibonacci_sphere(200.0, random_value), Vector2(0, 0))
+			initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
 		
 		if (total_time > 5 and enemies.size() < 2):
 			enemies.append(slow_enemy)
@@ -77,7 +79,7 @@ func _process(delta: float) -> void:
 		
 		if (total_time > 15 and enemies.size() < 4):
 			enemies.append(teleport_enemy)
-		
+	
 		accumulated_time -= spawn_rate
 		
 		

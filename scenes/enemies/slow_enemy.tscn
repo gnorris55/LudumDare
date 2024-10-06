@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcidmetleqs5b"]
+[gd_scene load_steps=14 format=3 uid="uid://bcidmetleqs5b"]
 
 [ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_3k2sy"]
 [ext_resource type="Texture2D" uid="uid://bm3nm5simyk1s" path="res://assets/sprites/slime_purple.png" id="2_qmo7l"]
+[ext_resource type="Texture2D" uid="uid://cwlnrvcxpccwi" path="res://assets/sprites/enemies/slow_enemy1.png" id="3_5d6a3"]
 [ext_resource type="PackedScene" uid="uid://boc0ecchsm7ci" path="res://scenes/enemies/health_bar.tscn" id="3_7hd27"]
+[ext_resource type="Texture2D" uid="uid://dvqr6vbf026w1" path="res://assets/sprites/enemies/slow_enemy2.png" id="4_pumnc"]
+[ext_resource type="Texture2D" uid="uid://dmm7c6dyxnt76" path="res://assets/sprites/enemies/slow_enemy3.png" id="5_rbsti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4x5w8"]
 atlas = ExtResource("2_qmo7l")
@@ -11,6 +14,18 @@ region = Rect2(0, 54, 24, 18)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cb1tn"]
 atlas = ExtResource("2_qmo7l")
 region = Rect2(24, 54, 24, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3obm"]
+atlas = ExtResource("3_5d6a3")
+region = Rect2(350, 150, 575, 675)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tvfj"]
+atlas = ExtResource("4_pumnc")
+region = Rect2(350, 150, 575, 675)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wcom"]
+atlas = ExtResource("5_rbsti")
+region = Rect2(350, 150, 575, 675)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcs87"]
 animations = [{
@@ -24,30 +39,47 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3obm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tvfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wcom")
+}],
+"loop": true,
+"name": &"default animation",
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iigop"]
-size = Vector2(14, 15)
+size = Vector2(43.3333, 61)
 
 [node name="base enemy" type="Node2D"]
 position = Vector2(128, -83)
-scale = Vector2(3, 3)
 script = ExtResource("1_3k2sy")
 speed = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 2
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_tcs87")
-autoplay = "default"
-frame_progress = 0.707254
+animation = &"default animation"
+autoplay = "default animation"
+frame_progress = 0.210207
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1.5)
+position = Vector2(-0.666668, 2.5)
 shape = SubResource("RectangleShape2D_iigop")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_7hd27")]
-offset_left = -14.0
-offset_top = -11.0
-offset_right = 15.0
-offset_bottom = -7.0
+offset_left = -15.6667
+offset_top = -36.3333
+offset_right = 13.3333
+offset_bottom = -32.3333

@@ -3,6 +3,7 @@ extends Node2D
 class_name Enemy
 
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed = 60.0
 @export var health = 50
@@ -24,6 +25,11 @@ func _init():
 func movement(delta: float):
 	var distance_vector = target_position - position
 	var direction_vector = distance_vector.normalized()
+	
+	if (direction_vector.x > 0 and animated_sprite.flip_h == false):
+		animated_sprite.flip_h = true
+	elif (direction_vector.x < 0 and animated_sprite.flip_h == true):
+		animated_sprite.flip_h = false
 	
 	if ((position - target_position).length() < 0.5):
 		#print("reached destination")

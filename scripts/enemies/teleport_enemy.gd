@@ -2,6 +2,8 @@ extends Node2D
 
 
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var timer: Timer = $Timer
 
 @export var speed = 60.0
 @export var health = 50
@@ -13,9 +15,11 @@ var target_position = Vector2(0, 0)
 var total_time = 0.0
 var accumulator = 0.0
 var spawn_rate = 4.0
+var teleporting = false
 
 func _ready():
 	health_bar.max_value = health
+	#timer.connect("timeout", self, "_on_timer_timeout")
 	#print("current speed: " + str(speed))
 
 func _init():
@@ -34,6 +38,7 @@ func fibonacci_sphere(radius: float = 1.0, random_value: float = 0.0) -> Vector2
 	
 	#return points
 
+
 func movement(delta: float):
 	
 	# this is going to be the center
@@ -41,19 +46,39 @@ func movement(delta: float):
 	
 	# temporary function so that scene does not get cluttered
 	if ((position - target_position).length() < 0.5):
-		#print("reached destination")
 		queue_free()
 	
-
 	
 	if (accumulator > spawn_rate):	
-		teleport_radius -= 20
-		var random_value = randf()
-
-		position = target_position + fibonacci_sphere(teleport_radius, random_value)
+		teleport_radius -= 50
+		print(accumulator)
+		animated_sprite.play("teleport")
 		accumulator -= spawn_rate
+		
+		timer.start()
+		
 	
 	accumulator += delta
+	
+func teleport():
+	var random_value = randf()
+	position = target_position + fibonacci_sphere(teleport_radius, random_value)
+	
+
+var teleport_state = 0
+
+func _on_timer_timeout() -> void:
+	if (teleport_state == 0):	
+		print("state 0")
+		teleport()
+		animated_sprite.play("teleport2")
+		teleport_state = 1
+		timer.start()
+	elif (teleport_state == 1):
+		print("state 1")
+		animated_sprite.play("default animation")
+		teleport_state = 0
+		timer.stop()
 	
 	#position += delta*speed*direction_vector
 # Called every frame. 'delta' is the elapsed time since the previous frame.
