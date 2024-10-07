@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://db5ln8f6sdu8g"]
+[gd_scene load_steps=61 format=3 uid="uid://db5ln8f6sdu8g"]
 
 [ext_resource type="Script" path="res://scripts/enemies/teleport_enemy.gd" id="1_n3psa"]
 [ext_resource type="Texture2D" uid="uid://ds0hb6weilr5p" path="res://assets/sprites/enemies/teleport_idle1.png" id="2_ym6yr"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dmrgrwdntv8o7" path="res://assets/sprites/enemies/teleport_animation18.png" id="20_3uq0l"]
 [ext_resource type="Texture2D" uid="uid://dty75n8rs1joi" path="res://assets/sprites/enemies/teleport_animation13.png" id="21_yphm7"]
 [ext_resource type="AudioStream" uid="uid://c2ueomospj3vm" path="res://assets/sounds/enemy_teleport.mp3" id="23_ao3pl"]
+[ext_resource type="PackedScene" uid="uid://c4tn2aitxmcwi" path="res://scenes/enemies/death_sounds.tscn" id="24_orga3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgumc"]
 atlas = ExtResource("2_ym6yr")
@@ -384,5 +385,7 @@ color = Color(0.162065, 0.162066, 0.162066, 1)
 
 [node name="TeleportSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_ao3pl")
+
+[node name="deathSounds" parent="." instance=ExtResource("24_orga3")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

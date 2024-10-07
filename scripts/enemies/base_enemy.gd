@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Enemy
 
+@onready var death_sounds: Node = $deathSounds
+
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_particles: CPUParticles2D = $CPUParticles2D
@@ -49,8 +51,9 @@ func take_damage(damage: int):
 	damage_particles.emitting = true
 	if (health <= 0):
 		collision_shape_2d.disabled = true
+		death_sounds.play_death_sound()
 		timer.start()
-		#animated_sprite.visible = false
+		animated_sprite.visible = false
 		health_bar.visible = false
 		
 	health_bar.set_value(health)

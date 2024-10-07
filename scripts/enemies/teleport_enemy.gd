@@ -11,6 +11,8 @@ extends Node2D
 @onready var teleport_sound: AudioStreamPlayer = $TeleportSound
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
+@onready var death_sounds: Node = $deathSounds
+
 
 
 @export var speed = 60.0
@@ -102,6 +104,7 @@ func take_damage(damage: int):
 	if (health <= 0):
 		collision_shape_2d.disabled = true
 		timer.start()
+		death_sounds.play_death_sound()
 		animated_sprite.visible = false
 		health_bar.visible = false
 		teleport_state = 2

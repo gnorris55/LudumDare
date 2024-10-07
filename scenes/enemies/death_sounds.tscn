@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4tn2aitxmcwi"]
+[gd_scene load_steps=7 format=3 uid="uid://c4tn2aitxmcwi"]
 
 [ext_resource type="Script" path="res://scripts/enemies/death_sounds.gd" id="1_6havr"]
+[ext_resource type="AudioStream" uid="uid://uu2w0g8arln4" path="res://assets/sounds/kill_1.mp3" id="2_ftmtw"]
+[ext_resource type="AudioStream" uid="uid://c0jw27c00mtia" path="res://assets/sounds/kill_2.mp3" id="3_nl2t5"]
+[ext_resource type="AudioStream" uid="uid://de0lsswxebi54" path="res://assets/sounds/kill_3.mp3" id="4_05j4f"]
+[ext_resource type="AudioStream" uid="uid://bvtnnuo7bnyt" path="res://assets/sounds/kill_4.mp3" id="5_huewl"]
+[ext_resource type="AudioStream" uid="uid://dfikwgu6mnt3b" path="res://assets/sounds/kill_5.mp3" id="6_1kxfo"]
 
 [node name="deathSounds" type="Node"]
 script = ExtResource("1_6havr")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DeathSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ftmtw")
+
+[node name="DeathSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nl2t5")
+
+[node name="DeathSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_05j4f")
+
+[node name="DeathSound4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_huewl")
+
+[node name="DeathSound5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1kxfo")
