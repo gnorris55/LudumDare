@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4tn2aitxmcwi"]
+
+[ext_resource type="Script" path="res://scripts/enemies/death_sounds.gd" id="1_6havr"]
+
+[node name="deathSounds" type="Node"]
+script = ExtResource("1_6havr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

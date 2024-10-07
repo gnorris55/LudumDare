@@ -6,6 +6,7 @@ class_name Enemy
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_particles: CPUParticles2D = $CPUParticles2D
 @onready var spawn_particles: CPUParticles2D = $SpawnParticles
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 @onready var timer: Timer = $Timer
 
@@ -38,6 +39,7 @@ func movement(delta: float):
 	
 	if ((position - target_position).length() < 0.5):
 		#print("reached destination")
+		
 		queue_free()
 	
 	position += delta*speed*direction_vector
@@ -46,6 +48,7 @@ func take_damage(damage: int):
 	health -= damage
 	damage_particles.emitting = true
 	if (health <= 0):
+		collision_shape_2d.disabled = true
 		timer.start()
 		animated_sprite.visible = false
 		health_bar.visible = false
@@ -62,4 +65,5 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
+	
 	queue_free()

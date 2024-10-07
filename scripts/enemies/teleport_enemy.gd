@@ -8,6 +8,11 @@ extends Node2D
 @onready var damage_particles: CPUParticles2D = $CPUParticles2D
 @onready var teleport_particles: CPUParticles2D = $TeleportParticles
 
+@onready var teleport_sound: AudioStreamPlayer = $TeleportSound
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+
+
+
 @export var speed = 60.0
 @export var health = 50
 
@@ -58,6 +63,7 @@ func movement(delta: float):
 		teleport_radius -= 50
 		print(accumulator)
 		animated_sprite.play("teleport")
+		teleport_sound.playing = true
 		teleport_particles.emitting = true
 		accumulator -= spawn_rate
 		
@@ -94,6 +100,7 @@ func _on_timer_timeout() -> void:
 func take_damage(damage: int):
 	health -= damage
 	if (health <= 0):
+		collision_shape_2d.disabled = true
 		timer.start()
 		animated_sprite.visible = false
 		health_bar.visible = false
