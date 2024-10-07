@@ -178,7 +178,7 @@ func _on_area_2d_area_entered(area):
 func _on_bomb_area_entered(area):
 	print(area.name)
 	print("bomb")
-	damage_enemies(area,100)
+	damage_enemies(area, 60)
 	
 	#pass # Replace with function body.
 

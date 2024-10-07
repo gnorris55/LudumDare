@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhdndi604fjuq" path="res://assets/sprites/sticky.png" id="5_5o18k"]
 [ext_resource type="Texture2D" uid="uid://cjg5mvvmso3lk" path="res://assets/sprites/scissor.png" id="6_py3mu"]
 [ext_resource type="Texture2D" uid="uid://t1nccfqmw4lb" path="res://assets/sprites/pencil.png" id="7_o4k38"]
-[ext_resource type="PackedScene" path="res://scenes/pencil_cursor.tscn" id="8_ikkxw"]
+[ext_resource type="PackedScene" uid="uid://hs2t47u1eo8k" path="res://scenes/pencil_cursor.tscn" id="8_ikkxw"]
 [ext_resource type="PackedScene" uid="uid://ohjudx156572" path="res://scenes/Game Over.tscn" id="9_boq3c"]
 [ext_resource type="PackedScene" uid="uid://2c4wfeqg47y8" path="res://scenes/enemies/controls.tscn" id="10_h4xne"]
 
