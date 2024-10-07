@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2rus7dhemat"]
+
+[ext_resource type="Script" path="res://scenes/shape_drawing/no_more_ink.gd" id="1_8ldpf"]
+
+[node name="no_more_ink" type="RichTextLabel"]
+offset_left = -48.0
+offset_top = -11.0
+offset_right = 65.0
+offset_bottom = 11.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "No more Ink"
+fit_content = true
+script = ExtResource("1_8ldpf")

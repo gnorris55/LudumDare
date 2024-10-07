@@ -1,7 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://co0et8vgqkfn2"]
+[gd_scene load_steps=8 format=3 uid="uid://co0et8vgqkfn2"]
 
-[ext_resource type="Texture2D" uid="uid://cl6bgfng011q3" path="res://assets/sprites/scirbble_dot.png" id="1_wh7v1"]
+[ext_resource type="Texture2D" uid="uid://bl1p4tc2cgfn4" path="res://assets/sprites/scirbble_dot-Sheet.png" id="1_jg7hb"]
 
-[node name="dot" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkbv6"]
+atlas = ExtResource("1_jg7hb")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2gk8"]
+atlas = ExtResource("1_jg7hb")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u0ep"]
+atlas = ExtResource("1_jg7hb")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce2jg"]
+atlas = ExtResource("1_jg7hb")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf5dq"]
+atlas = ExtResource("1_jg7hb")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1q65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkbv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2gk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u0ep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce2jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf5dq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="dot" type="AnimatedSprite2D"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_wh7v1")
+sprite_frames = SubResource("SpriteFrames_c1q65")

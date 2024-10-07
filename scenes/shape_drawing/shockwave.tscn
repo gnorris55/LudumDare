@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b782fus5hvm8h"]
 
-[ext_resource type="Texture2D" uid="uid://7pxw745vvomq" path="res://assets/sprites/shockwave.png" id="1_dnd3t"]
+[ext_resource type="Texture2D" uid="uid://hjluhuccn1qf" path="res://assets/sprites/shockwave3.png" id="1_13rbn"]
 [ext_resource type="Script" path="res://scenes/shape_drawing/shockwave.gd" id="2_rneub"]
 
 [sub_resource type="Curve" id="Curve_t3eg4"]
@@ -27,7 +27,7 @@ emitting = false
 amount = 3
 lifetime = 0.5
 one_shot = true
-texture = ExtResource("1_dnd3t")
+texture = ExtResource("1_13rbn")
 gravity = Vector2(0, 0)
 angular_velocity_min = 1.0
 angular_velocity_max = 2.69
