@@ -62,7 +62,7 @@ func movement(delta: float):
 	
 	
 	if (accumulator > spawn_rate):	
-		teleport_radius -= 50
+		teleport_radius -= 100
 		print(accumulator)
 		animated_sprite.play("teleport")
 		teleport_sound.playing = true

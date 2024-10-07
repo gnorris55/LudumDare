@@ -60,7 +60,7 @@ point_count = 2
 position = Vector2(128, -83)
 script = ExtResource("1_3k2sy")
 speed = 7.0
-health = 80
+health = 160
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 2

@@ -34,13 +34,6 @@ func fibonacci_sphere(radius: float = 1.0, random_value: float = 0.0) -> Vector2
 	
 	#return points
 
-func load_multiple_enemies(number_enemies: int):
-	for i in range(number_enemies):
-		var new_instance = enemy.instantiate()
-		initialize_enemy(new_instance, Vector2(i*30, i*30))
-		
-		
-
 func _ready() -> void:
 	#enemies.append(teleport_enemy)
 	#load_multiple_enemies(5)
@@ -48,6 +41,19 @@ func _ready() -> void:
 
 func determine_enemy_type():
 	pass
+
+var spawn_rareness = 10
+
+func get_enemy_type() -> int:
+	var enemy_spawn_index = randi_range(0, spawn_rareness)
+	if (enemy_spawn_index <= 10):
+		return 0
+	elif(enemy_spawn_index <= 14):
+		return 1
+	elif(enemy_spawn_index <= 18):
+		return 2
+	else:
+		return 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -57,27 +63,31 @@ func _process(delta: float) -> void:
 		#print("enemy should spawn")
 		#print(random_value)
 		
-		var spawn_number = floor(2*log(0.25*total_time + 1))
+		var spawn_number = floor(log(0.1*total_time + 1)) + 1
+		print(spawn_number)
 		
 		#print("number to spawn: " + str(spawn_number))
 		
 		for i in range(spawn_number):
 			#print("enemy array size: " + str(enemies.size()))
-			var enemy_spawn_index = randi_range(0, enemies.size() - 1)
 			var random_value = randf()
+			var enemy_spawn_index = get_enemy_type()
 			var new_instance = enemies[enemy_spawn_index].instantiate()
 			#var new_instance = enemy_arr[3].instantiate()
 			initialize_enemy(new_instance, fibonacci_sphere(spawn_radius, random_value), Vector2(0, 0))
 		
-		if (total_time > 5 and enemies.size() < 2):
+		if (total_time > 10 and enemies.size() < 2):
 			enemies.append(slow_enemy)
+			spawn_rareness += 4
 			#print("adding slow enemy")
 			#print(enemies)
 		
-		if (total_time > 10 and enemies.size() < 3):
+		if (total_time > 15 and enemies.size() < 3):
+			spawn_rareness += 4
 			enemies.append(fast_enemy)
 		
-		if (total_time > 15 and enemies.size() < 4):
+		if (total_time > 20 and enemies.size() < 4):
+			spawn_rareness += 3
 			enemies.append(teleport_enemy)
 	
 		accumulated_time -= spawn_rate

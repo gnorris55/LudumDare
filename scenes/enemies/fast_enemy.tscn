@@ -59,7 +59,7 @@ point_count = 2
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_mj14d")
-speed = 30.0
+speed = 40.0
 health = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

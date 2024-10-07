@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://big6yekmkpkxu"]
+
+[ext_resource type="Texture2D" uid="uid://bku0h188p8c3d" path="res://assets/sprites/dot.png" id="1_y8msi"]
+[ext_resource type="Texture2D" uid="uid://dvrlypir67agc" path="res://assets/sprites/line.png" id="2_7ny1d"]
+
+[node name="controls" type="Node2D"]
+
+[node name="Dot" type="Sprite2D" parent="."]
+texture = ExtResource("1_y8msi")
+
+[node name="Line" type="Node2D" parent="."]
+position = Vector2(0, -46)
+
+[node name="Dot" type="Sprite2D" parent="Line"]
+position = Vector2(-20, -57)
+texture = ExtResource("1_y8msi")
+
+[node name="Dot2" type="Sprite2D" parent="Line"]
+texture = ExtResource("1_y8msi")
+
+[node name="line" type="Sprite2D" parent="Line"]
+position = Vector2(-10, -29)
+rotation = 1.25711
+scale = Vector2(0.506395, 1)
+texture = ExtResource("2_7ny1d")
+
+[node name="Label" type="Label" parent="Line"]
+offset_left = -151.0
+offset_top = -41.0
+offset_right = -48.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.470588, 0.470588, 0.470588, 1)
+text = "Eraser Attack
+"
+
+[node name="Triangle" type="Node2D" parent="."]
+
+[node name="Dot2" type="Sprite2D" parent="Triangle"]
+position = Vector2(-20, -103)
+texture = ExtResource("1_y8msi")
+
+[node name="Dot3" type="Sprite2D" parent="Triangle"]
+position = Vector2(0, -46)
+texture = ExtResource("1_y8msi")
+
+[node name="line" type="Sprite2D" parent="Triangle"]
+position = Vector2(-10, -75)
+rotation = 1.25711
+scale = Vector2(0.506395, 1)
+texture = ExtResource("2_7ny1d")
+
+[node name="line2" type="Sprite2D" parent="Triangle"]
+position = Vector2(-32, -168)
+rotation = 1.90957
+scale = Vector2(0.506395, 1)
+texture = ExtResource("2_7ny1d")
+
+[node name="Dot" type="Sprite2D" parent="Triangle"]
+position = Vector2(-20, -195)
+texture = ExtResource("1_y8msi")
+
+[node name="Dot4" type="Sprite2D" parent="Triangle"]
+position = Vector2(0, -138)
+texture = ExtResource("1_y8msi")
+
+[node name="line3" type="Sprite2D" parent="Triangle"]
+position = Vector2(-8, -168)
+rotation = 1.25711
+scale = Vector2(0.506395, 1)
+texture = ExtResource("2_7ny1d")
+
+[node name="Dot5" type="Sprite2D" parent="Triangle"]
+position = Vector2(-38, -141)
+texture = ExtResource("1_y8msi")
+
+[node name="Label" type="Label" parent="Triangle"]
+offset_left = -148.0
+offset_top = -180.0
+offset_right = -58.0
+offset_bottom = -157.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.470588, 0.470588, 0.470588, 1)
+text = "Area Attack
+"
+
+[node name="line4" type="Sprite2D" parent="Triangle"]
+position = Vector2(-20, -140)
+rotation = -3.11653
+scale = Vector2(0.506395, 1)
+texture = ExtResource("2_7ny1d")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -152.0
+offset_top = -15.0
+offset_right = -49.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.470076, 0.470076, 0.470076, 1)
+text = "Explosion Attack
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -156.0
+offset_top = 34.0
+offset_right = 32.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.808998, 0.808998, 0.808998, 1)
+theme_override_colors/font_outline_color = Color(0.839216, 0, 0, 1)
+text = "Left click to place points and enter to draw shape"
+autowrap_mode = 2
