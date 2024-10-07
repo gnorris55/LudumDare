@@ -22,7 +22,7 @@ func _signal_Squeeb_animation_finished() -> void:
 
 
 func _Squeed_Area2D_entered(area: Area2D) -> void:
-	change_hearts(hearts-1)
+	#change_hearts(hearts-1)
 	if hearts == 0:
 		emit_signal("animation_finished")
 		SqueebDies()

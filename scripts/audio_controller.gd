@@ -15,8 +15,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var enemy_count = enemy_manager.get_child_count()
-	var adjustable_volume = 2 * enemy_count - 100
+	var adjustable_volume = enemy_count - 40
 	$loop_adjustable.volume_db = clampf(adjustable_volume, -100.0, 10.0)
+	#if enemy_count > 26:
+		#$loop_adjustable.volume_db = 0
+	#else: $loop_adjustable.volume_db = -80
+	print(str(enemy_count))
 
 
 func _signal_StartButton_pressed() -> void:
