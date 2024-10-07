@@ -123,3 +123,5 @@ scale_amount_min = 8.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_b3trr")
 color = Color(0.162065, 0.162066, 0.162066, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

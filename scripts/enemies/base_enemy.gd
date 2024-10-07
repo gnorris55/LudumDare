@@ -50,7 +50,7 @@ func take_damage(damage: int):
 	if (health <= 0):
 		collision_shape_2d.disabled = true
 		timer.start()
-		animated_sprite.visible = false
+		#animated_sprite.visible = false
 		health_bar.visible = false
 		
 	health_bar.set_value(health)
@@ -65,5 +65,5 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	
+	print("enemy should despawn")
 	queue_free()
