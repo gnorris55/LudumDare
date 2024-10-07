@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	#if enemy_count > 26:
 		#$loop_adjustable.volume_db = 0
 	#else: $loop_adjustable.volume_db = -80
-	print(str(enemy_count))
+	#print(str(enemy_count))
 
 
 func _signal_StartButton_pressed() -> void:
