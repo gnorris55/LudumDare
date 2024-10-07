@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://big6yekmkpkxu"]
+[gd_scene load_steps=3 format=3 uid="uid://2c4wfeqg47y8"]
 
 [ext_resource type="Texture2D" uid="uid://bku0h188p8c3d" path="res://assets/sprites/dot.png" id="1_y8msi"]
 [ext_resource type="Texture2D" uid="uid://dvrlypir67agc" path="res://assets/sprites/line.png" id="2_7ny1d"]
 
 [node name="controls" type="Node2D"]
+position = Vector2(63, 29)
 
 [node name="Dot" type="Sprite2D" parent="."]
 texture = ExtResource("1_y8msi")
@@ -33,6 +34,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.470588, 0.470588, 0.470588, 1)
 text = "Eraser Attack
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="Triangle" type="Node2D" parent="."]
 
@@ -83,6 +85,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.470588, 0.470588, 0.470588, 1)
 text = "Area Attack
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="line4" type="Sprite2D" parent="Triangle"]
 position = Vector2(-20, -140)
@@ -99,6 +102,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.470076, 0.470076, 0.470076, 1)
 text = "Explosion Attack
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="."]
 offset_left = -156.0
@@ -110,3 +114,4 @@ theme_override_colors/font_shadow_color = Color(0.808998, 0.808998, 0.808998, 1)
 theme_override_colors/font_outline_color = Color(0.839216, 0, 0, 1)
 text = "Left click to place points and enter to draw shape"
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true

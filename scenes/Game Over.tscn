@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ohjudx156572"]
+[gd_scene load_steps=14 format=3 uid="uid://ohjudx156572"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_17br1"]
-[ext_resource type="Texture2D" uid="uid://y1um3o1yc2sb" path="res://zax_folder/retry_button_1.png" id="3_kodr4"]
-[ext_resource type="Texture2D" uid="uid://bqlw0aqtpdmgj" path="res://zax_folder/retry_button_2.png" id="4_0c8h5"]
-[ext_resource type="Texture2D" uid="uid://jilm4da4uycv" path="res://zax_folder/exit_button_1.png" id="4_4bab3"]
-[ext_resource type="Texture2D" uid="uid://dgc6r4a4ensmq" path="res://zax_folder/exit_button_2.png" id="5_li3f6"]
+[ext_resource type="Texture2D" uid="uid://80f5wbpoheb7" path="res://zax_folder/gameover/IMG_0342.png" id="2_3gjf3"]
+[ext_resource type="Texture2D" uid="uid://y1um3o1yc2sb" path="res://zax_folder/retrybutton/retry_button_1.png" id="3_kodr4"]
+[ext_resource type="Texture2D" uid="uid://bqlw0aqtpdmgj" path="res://zax_folder/retrybutton/retry_button_2.png" id="4_0c8h5"]
+[ext_resource type="Texture2D" uid="uid://jilm4da4uycv" path="res://zax_folder/exitbutton/exit_button_1.png" id="4_4bab3"]
+[ext_resource type="Texture2D" uid="uid://dgc6r4a4ensmq" path="res://zax_folder/exitbutton/exit_button_2.png" id="5_li3f6"]
+[ext_resource type="Texture2D" uid="uid://brkbq3uvdcbu2" path="res://zax_folder/squeebdead/5.png" id="7_4k22f"]
+[ext_resource type="Texture2D" uid="uid://e6gl4m8d052q" path="res://zax_folder/squeebdead/6.png" id="8_i0q1m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_djixn"]
 animations = [{
@@ -38,6 +41,20 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i53ox"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0yv0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4k22f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i0q1m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="GameOver" type="Control"]
 z_index = 1
 layout_mode = 3
@@ -49,6 +66,7 @@ grow_vertical = 2
 script = ExtResource("1_17br1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -1079.0
 offset_top = -591.0
@@ -56,6 +74,11 @@ offset_right = -1039.0
 offset_bottom = -551.0
 scale = Vector2(58, 33)
 color = Color(0, 0, 0, 0.392157)
+
+[node name="GameOverScreen" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.501961)
+scale = Vector2(0.853502, 0.480226)
+texture = ExtResource("2_3gjf3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 0.9)
@@ -88,16 +111,22 @@ offset_bottom = -227.0
 scale = Vector2(45.8754, 18.5374)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i53ox")
 
-[node name="GameOverText" type="Label" parent="."]
-layout_mode = 0
-offset_left = -382.0
-offset_top = -134.0
-offset_right = 352.0
-offset_bottom = 41.0
-theme_override_font_sizes/font_size = 128
-text = "GAME OVER"
-horizontal_alignment = 1
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -26)
+scale = Vector2(0.313333, 0.313333)
+sprite_frames = SubResource("SpriteFrames_0yv0f")
+autoplay = "default"
+frame_progress = 0.198586
 
-[connection signal="pressed_retry" from="." to="." method="_on_pressed_retry"]
+[node name="TimeOfDeath" type="Label" parent="."]
+layout_mode = 0
+offset_left = -604.0
+offset_top = 250.0
+offset_right = 667.0
+offset_bottom = 425.0
+scale = Vector2(0.582037, 0.582037)
+theme_override_font_sizes/font_size = 128
+text = "Score: 123.45"
+
 [connection signal="pressed" from="AnimatedSprite2D/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="AnimatedSprite2D2/ExitButton" to="." method="_on_exit_button_pressed"]

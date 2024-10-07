@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfs1w654ku4k"]
+
+[ext_resource type="Script" path="res://scripts/audio_controller.gd" id="1_kilhg"]
+[ext_resource type="AudioStream" uid="uid://4yo52nckaegr" path="res://zax_folder/allaudio/squeeb_menu.wav" id="2_kac5r"]
+[ext_resource type="AudioStream" uid="uid://cnkvmhuvyoeng" path="res://zax_folder/allaudio/squeeb_intro.wav" id="3_6k1co"]
+[ext_resource type="AudioStream" uid="uid://b0nib43kt203w" path="res://zax_folder/allaudio/squeeb_loop.wav" id="4_pyct4"]
+[ext_resource type="AudioStream" uid="uid://dd31l2f604anb" path="res://zax_folder/allaudio/squeeb_loop_layer2.wav" id="5_7oqlv"]
+[ext_resource type="AudioStream" uid="uid://dnhu4hg468hms" path="res://zax_folder/allaudio/squeeb_die.mp3" id="6_3sked"]
+
+[node name="AudioController" type="Node"]
+script = ExtResource("1_kilhg")
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kac5r")
+
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6k1co")
+
+[node name="Loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pyct4")
+
+[node name="loop_adjustable" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7oqlv")
+
+[node name="SqueebDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3sked")
+
+[connection signal="finished" from="Intro" to="." method="_on_Intro_finished"]

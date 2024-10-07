@@ -1,0 +1,161 @@
+[gd_scene load_steps=23 format=3 uid="uid://bjn5fds0icbo8"]
+
+[ext_resource type="Script" path="res://scripts/player_overlay.gd" id="1_3av6b"]
+[ext_resource type="Texture2D" uid="uid://b8rsx63gn2rye" path="res://zax_folder/squeebdamage/1.png" id="2_mrutp"]
+[ext_resource type="Texture2D" uid="uid://dri014es0rcjt" path="res://zax_folder/squeebdamage/2.png" id="3_1rm37"]
+[ext_resource type="Texture2D" uid="uid://tbp0k484o32w" path="res://zax_folder/squeebdamage/3.png" id="4_y3ha8"]
+[ext_resource type="Texture2D" uid="uid://cljucaet0b808" path="res://zax_folder/squeebdamage/4.png" id="5_d8q86"]
+[ext_resource type="Script" path="res://scripts/hearts_controller.gd" id="6_8f3ei"]
+[ext_resource type="Texture2D" uid="uid://dhk5n8eat8kjj" path="res://zax_folder/squeebdamage/5.png" id="6_uw3wo"]
+[ext_resource type="Texture2D" uid="uid://bixu5jjb78qxm" path="res://zax_folder/hearts/heart_1.png" id="6_w3ktj"]
+[ext_resource type="Texture2D" uid="uid://dnefsxtw0212c" path="res://zax_folder/hearts/heart_2.png" id="7_p6m02"]
+[ext_resource type="Texture2D" uid="uid://38yer3ydnc4p" path="res://zax_folder/squeebdeath/1.png" id="9_a301y"]
+[ext_resource type="Texture2D" uid="uid://c8ewi2f7ffmmi" path="res://zax_folder/squeebdeath/2.png" id="10_l8vcd"]
+[ext_resource type="Texture2D" uid="uid://cym388xkrxvqb" path="res://zax_folder/squeebdeath/3.png" id="11_n0ud3"]
+[ext_resource type="Texture2D" uid="uid://so561pp4vgy0" path="res://zax_folder/squeebdeath/4.png" id="12_egkll"]
+[ext_resource type="Texture2D" uid="uid://dw58mo2l5la0b" path="res://zax_folder/squeebidle/1.png" id="13_blg8h"]
+[ext_resource type="Texture2D" uid="uid://8riqt7a8ave3" path="res://zax_folder/squeebdeath/5.png" id="13_m4nno"]
+[ext_resource type="Texture2D" uid="uid://dl3ewbe3ch07" path="res://zax_folder/squeebidle/2.png" id="14_36pso"]
+[ext_resource type="Script" path="res://scripts/squeed.gd" id="15_6cb5f"]
+[ext_resource type="AudioStream" uid="uid://dvb26527noafl" path="res://zax_folder/allaudio/squeeb_damage.mp3" id="19_gci87"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="19_v763d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsmr1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_uw3wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d8q86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y3ha8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1rm37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mrutp")
+}],
+"loop": false,
+"name": &"squeeb_damage",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_a301y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l8vcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_n0ud3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_egkll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_m4nno")
+}],
+"loop": false,
+"name": &"squeeb_death",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_blg8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_36pso")
+}],
+"loop": true,
+"name": &"squeeb_idle",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8y03t"]
+radius = 6.28117
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35pr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_w3ktj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p6m02")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Player Overlay" type="Node2D"]
+script = ExtResource("1_3av6b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 0.9)
+
+[node name="Squeed" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 7)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_nsmr1")
+animation = &"squeeb_damage"
+autoplay = "squeeb_idle"
+frame = 4
+frame_progress = 1.0
+offset = Vector2(40, -50)
+script = ExtResource("15_6cb5f")
+
+[node name="Area2D" type="Area2D" parent="Squeed"]
+position = Vector2(30, -70)
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Squeed/Area2D"]
+shape = SubResource("CircleShape2D_8y03t")
+
+[node name="HeartsController" type="Node2D" parent="."]
+position = Vector2(-521, -119)
+script = ExtResource("6_8f3ei")
+
+[node name="Heart1" type="AnimatedSprite2D" parent="HeartsController"]
+position = Vector2(-39, -36)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_35pr6")
+
+[node name="Heart2" type="AnimatedSprite2D" parent="HeartsController"]
+position = Vector2(43, -23)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_35pr6")
+frame_progress = 0.131331
+
+[node name="Heart3" type="AnimatedSprite2D" parent="HeartsController"]
+position = Vector2(-16, 32)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_35pr6")
+frame_progress = 0.131331
+
+[node name="Timer" type="Label" parent="."]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 570.0
+offset_top = -360.0
+offset_right = 633.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "00"
+horizontal_alignment = 2
+script = ExtResource("19_v763d")
+
+[node name="Squeek" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_gci87")
+
+[connection signal="animation_finished" from="Squeed" to="." method="_signal_Squeeb_animation_finished"]
+[connection signal="area_entered" from="Squeed/Area2D" to="." method="_Squeed_Area2D_entered"]

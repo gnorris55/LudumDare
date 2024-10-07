@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyrc6atiru4er"]
+[gd_scene load_steps=12 format=3 uid="uid://44ny0rnf667o"]
 
-[ext_resource type="PackedScene" uid="uid://bjn5fds0icbo8" path="res://scenes/Player Overlay.tscn" id="1_f1qyk"]
+[ext_resource type="PackedScene" uid="uid://bjn5fds0icbo8" path="res://scenes/PlayerOverlay.tscn" id="1_f1qyk"]
 [ext_resource type="PackedScene" uid="uid://cvych7c63qrr0" path="res://scenes/shape_drawing/shape_controller.tscn" id="2_ncwdl"]
 [ext_resource type="PackedScene" uid="uid://be7uspxq4t2yh" path="res://scenes/enemies/enemy_manager.tscn" id="3_5o0fs"]
 [ext_resource type="PackedScene" uid="uid://b0aikikg5j4qi" path="res://scenes/enemies/paper.tscn" id="4_36jnc"]
@@ -8,25 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bhdndi604fjuq" path="res://assets/sprites/sticky.png" id="6_rnxav"]
 [ext_resource type="Texture2D" uid="uid://cjg5mvvmso3lk" path="res://assets/sprites/scissor.png" id="7_g3evo"]
 [ext_resource type="Texture2D" uid="uid://t1nccfqmw4lb" path="res://assets/sprites/pencil.png" id="8_tj2p2"]
-[ext_resource type="Texture2D" uid="uid://bq0dbgi7gllvt" path="res://zax_folder/start_button_1.png" id="9_k13ej"]
-[ext_resource type="Script" path="res://scripts/menu.gd" id="9_ues7y"]
-[ext_resource type="Texture2D" uid="uid://ckwlyvefqqmpp" path="res://zax_folder/start_button_2.png" id="10_4gmqr"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dnnyq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_k13ej")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_4gmqr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yh75r"]
+[ext_resource type="PackedScene" uid="uid://en51rvyfj65" path="res://scenes/menu_box.tscn" id="9_v8bhc"]
+[ext_resource type="PackedScene" path="res://scenes/pencil_cursor.tscn" id="10_ll1ws"]
+[ext_resource type="PackedScene" uid="uid://bfs1w654ku4k" path="res://scenes/audio_controller.tscn" id="13_nt23b"]
 
 [node name="Main" type="Node2D"]
 
@@ -56,45 +40,19 @@ texture = ExtResource("8_tj2p2")
 
 [node name="enemy_manager" parent="." instance=ExtResource("3_5o0fs")]
 
+[node name="PlayerOverlay" parent="." instance=ExtResource("1_f1qyk")]
+
 [node name="GameOver" parent="." instance=ExtResource("4_l5e7m")]
+visible = false
 
-[node name="Player Overlay" parent="." instance=ExtResource("1_f1qyk")]
+[node name="MenuBox" parent="." instance=ExtResource("9_v8bhc")]
 
-[node name="MenuBox" type="ColorRect" parent="."]
-offset_left = -644.0
-offset_top = -364.0
-offset_right = -604.0
-offset_bottom = -324.0
-scale = Vector2(32.1833, 18.1766)
-color = Color(0.927882, 0.613816, 0.446337, 1)
-script = ExtResource("9_ues7y")
+[node name="pencilCursor" parent="." instance=ExtResource("10_ll1ws")]
+z_index = 2
 
-[node name="MenuTitle" type="Label" parent="MenuBox"]
-layout_mode = 0
-offset_right = 1260.0
-offset_bottom = 177.0
-scale = Vector2(0.0317469, 0.060425)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 56
-text = "
-Defend Squeeb!
-|
-V"
-horizontal_alignment = 1
+[node name="AudioController" parent="." instance=ExtResource("13_nt23b")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuBox"]
-position = Vector2(23.1176, 37.4107)
-scale = Vector2(0.04, 0.055)
-sprite_frames = SubResource("SpriteFrames_dnnyq")
-
-[node name="Button" type="Button" parent="MenuBox/AnimatedSprite2D"]
-offset_left = -233.817
-offset_top = -249.071
-offset_right = -225.817
-offset_bottom = -241.071
-scale = Vector2(42.9162, 20.732)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_yh75r")
-
-[connection signal="pressed_retry" from="GameOver" to="Player Overlay" method="_from_GameOver_pressed_retry"]
-[connection signal="squeedDied" from="Player Overlay" to="GameOver" method="_from_PlayerOverlay_squeed_died"]
-[connection signal="pressed" from="MenuBox/AnimatedSprite2D/Button" to="MenuBox" method="_start_game"]
+[connection signal="squeedDied" from="PlayerOverlay" to="GameOver" method="_from_PlayerOverlay_squeed_died"]
+[connection signal="squeedDied" from="PlayerOverlay" to="AudioController" method="_signal_PlayerOverlay_squeedDied"]
+[connection signal="StartButton_pressed" from="MenuBox" to="PlayerOverlay" method="signal_MenuBox_StartButton_pressed"]
+[connection signal="StartButton_pressed" from="MenuBox" to="AudioController" method="_signal_StartButton_pressed"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://en51rvyfj65"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_1bvrp"]
+[ext_resource type="Texture2D" uid="uid://dmf7okdy4abdf" path="res://zax_folder/startmenu/MenuIcon.png" id="2_3p6si"]
+[ext_resource type="Texture2D" uid="uid://bq0dbgi7gllvt" path="res://zax_folder/startbutton/start_button_1.png" id="3_fof74"]
+[ext_resource type="Texture2D" uid="uid://ckwlyvefqqmpp" path="res://zax_folder/startbutton/start_button_2.png" id="4_d5dls"]
+[ext_resource type="PackedScene" uid="uid://2c4wfeqg47y8" path="res://scenes/enemies/controls.tscn" id="5_2mllq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dnnyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fof74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d5dls")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yh75r"]
+
+[node name="MenuBox" type="ColorRect"]
+offset_left = -644.0
+offset_top = -364.0
+offset_right = -604.0
+offset_bottom = -324.0
+scale = Vector2(32.1833, 18.1766)
+color = Color(0.929412, 0.615686, 0.447059, 0.392157)
+script = ExtResource("1_1bvrp")
+
+[node name="MenuIcon" type="Sprite2D" parent="."]
+position = Vector2(20.6629, 11.6083)
+scale = Vector2(0.00666421, 0.0117996)
+texture = ExtResource("2_3p6si")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(23.1176, 37.4107)
+scale = Vector2(0.04, 0.055)
+sprite_frames = SubResource("SpriteFrames_dnnyq")
+autoplay = "default"
+
+[node name="StartButton" type="Button" parent="AnimatedSprite2D"]
+offset_left = -233.817
+offset_top = -249.071
+offset_right = -225.817
+offset_bottom = -241.071
+scale = Vector2(42.9162, 20.732)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yh75r")
+
+[node name="controls" parent="." instance=ExtResource("5_2mllq")]
+position = Vector2(37.0378, 8.25237)
+scale = Vector2(0.0185131, 0.033434)
+
+[connection signal="pressed" from="AnimatedSprite2D/StartButton" to="." method="_signal_StartButton_pressed"]

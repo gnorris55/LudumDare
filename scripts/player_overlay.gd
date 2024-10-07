@@ -5,42 +5,34 @@ extends Node2D
 @onready var timer = $Timer
 
 @export var maxHearts = 3;
-
-var hearts
+@export var hearts: int
 
 signal squeedDied
+signal animation_finished
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hearts = maxHearts
 	pass # Replace with function body.
-	
-	
+
+
+func _signal_Squeeb_animation_finished() -> void:
+	emit_signal("animation_finished")
+
+
 func _Squeed_Area2D_entered(area: Area2D) -> void:
-	take_damage()
-
-
-func take_damage() -> void:
 	change_hearts(hearts-1)
 	if hearts == 0:
+		emit_signal("animation_finished")
 		SqueebDies()
 		return
 	elif hearts < 0: return
+	$Squeek.play()
 	squeedNode.play("squeeb_damage")
-	await get_tree().create_timer(1).timeout
+	await animation_finished
 	squeedNode.play("squeeb_idle")
-
-func SqueebDies() -> void:
-	squeedNode.play("squeeb_death")
-	timer.StopTimer()
-	emit_signal("squeedDied")
-	pass
-
-func _from_GameOver_pressed_retry() -> void:
-	change_hearts(maxHearts)
-	squeedNode.play("squeeb_idle")
-	timer.StartTimer()
+	print("1: "+ str(hearts) +" | "+ str(typeof(hearts)))
 
 
 func change_hearts(num: int) -> void:
@@ -48,6 +40,13 @@ func change_hearts(num: int) -> void:
 	heartsController.set_hearts(hearts)
 
 
-#func _input(event: InputEvent) -> void:
-	#iif event is InputEventKey and event.is_pressed(): if Input.is_key_pressed(KEY_L):
-		#take_damage()
+func signal_MenuBox_StartButton_pressed() -> void:
+	timer.StartTimer()
+
+
+func SqueebDies() -> void:
+	squeedNode.play("squeeb_death")
+	timer.StopTimer()
+	emit_signal("squeedDied")
+	timer.visible = false
+	print("2: "+ str(hearts))
